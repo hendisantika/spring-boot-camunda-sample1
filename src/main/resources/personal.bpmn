@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:camunda="http://camunda.org/schema/1.0/bpmn" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:modeler="http://camunda.org/schema/modeler/1.0" id="Definitions_04k9pz2" targetNamespace="http://bpmn.io/schema/bpmn" exporter="Camunda Modeler" exporterVersion="4.10.0" modeler:executionPlatform="Camunda Platform" modeler:executionPlatformVersion="7.15.0">
+  <bpmn:process id="personal-message" name="Personal Message" isExecutable="true" camunda:versionTag="1.0.0">
+    <bpmn:startEvent id="start-event-retrieve-personal-message" name="Retrieve Personal Message">
+      <bpmn:outgoing>Flow_018jmnj</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="Flow_018jmnj" sourceRef="start-event-retrieve-personal-message" targetRef="service-task-log-on-console" />
+    <bpmn:serviceTask id="service-task-log-on-console" name="Log on Console" camunda:delegateExpression="${logger}">
+      <bpmn:incoming>Flow_018jmnj</bpmn:incoming>
+      <bpmn:outgoing>Flow_0fd1xmh</bpmn:outgoing>
+    </bpmn:serviceTask>
+    <bpmn:endEvent id="end-event-retrieve-personal-message" name="Personal Message Retrieved">
+      <bpmn:incoming>Flow_0fd1xmh</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0fd1xmh" sourceRef="service-task-log-on-console" targetRef="end-event-retrieve-personal-message" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="personal-message">
+      <bpmndi:BPMNEdge id="Flow_018jmnj_di" bpmnElement="Flow_018jmnj">
+        <di:waypoint x="198" y="90" />
+        <di:waypoint x="250" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0fd1xmh_di" bpmnElement="Flow_0fd1xmh">
+        <di:waypoint x="350" y="90" />
+        <di:waypoint x="432" y="90" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="start-event-retrieve-personal-message">
+        <dc:Bounds x="162" y="72" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="158" y="115" width="45" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0c9bo8n_di" bpmnElement="service-task-log-on-console">
+        <dc:Bounds x="250" y="50" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0c9qtp9_di" bpmnElement="end-event-retrieve-personal-message">
+        <dc:Bounds x="432" y="72" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="426" y="115" width="48" height="40" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
